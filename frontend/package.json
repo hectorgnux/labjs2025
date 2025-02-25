@@ -1,0 +1,6 @@
+{
+  "name": "time-chile-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Chile time",
+  "main": "src/index.html"
+}
