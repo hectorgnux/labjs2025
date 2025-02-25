@@ -21,5 +21,5 @@ jobs:
         run: docker-compose up -d
       - name: Check frontend
         run: curl http://localhost:81
-      - name: Cleanup
-        run: docker-compose down
+#     - name: Cleanup
+#        run: docker-compose down
