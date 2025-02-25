@@ -20,6 +20,6 @@ jobs:
       - name: Test application
         run: docker-compose up -d
       - name: Check frontend
-        run: curl --retry 10 --retry-delay 5 http://localhost:80
+        run: curl --retry 10 --retry-delay 5 http://localhost:81
       - name: Cleanup
         run: docker-compose down
