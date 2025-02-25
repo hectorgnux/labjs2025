@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    container_name: time-chile-backend
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    container_name: time-chile-frontend
+    depends_on:
+      - backend
