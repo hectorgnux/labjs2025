@@ -9,7 +9,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "80:80"
+      - "81:80"
     container_name: time-chile-frontend
     depends_on:
       - backend
