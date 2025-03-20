@@ -15,11 +15,26 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      
+      # Paso 1: Detener el stack labjs2025
+      - name: Stop labjs2025 stack
+        run: |
+          docker-compose -p labjs2025 down || echo "No labjs2025 stack running"
+      
+      # Paso 2: Eliminar imágenes específicas
+      - name: Remove specific images
+        run: |
+          docker rmi -f moby/buildkit labjs2025-backend labjs2025-frontend || echo "Some or all images not found"
+      
       - name: Build Docker images
         run: docker-compose build
+      
       - name: Test application
         run: docker-compose up -d
+      
       - name: Check frontend
         run: curl http://localhost:81
-#     - name: Cleanup
-#        run: docker-compose down
+      
+      # Opcional: Limpiar después de la ejecución
+      # - name: Cleanup
+      #   run: docker-compose down
