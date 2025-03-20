@@ -18,7 +18,7 @@ jobs:
       
       # Paso 1: Detener el stack labjs2025
       - name: Stop labjs2025 stack
-        shell: pwsh # Usar PowerShell explícitamente
+        shell: powershell # Usar PowerShell clásico
         run: |
           try {
             docker-compose -p labjs2025 down
@@ -28,7 +28,7 @@ jobs:
       
       # Paso 2: Eliminar imágenes específicas
       - name: Remove specific images
-        shell: pwsh # Usar PowerShell explícitamente
+        shell: powershell # Usar PowerShell clásico
         run: |
           try {
             docker rmi -f moby/buildkit labjs2025-backend labjs2025-frontend
@@ -37,18 +37,18 @@ jobs:
           }
       
       - name: Build Docker images
-        shell: pwsh
+        shell: powershell
         run: docker-compose build
       
       - name: Test application
-        shell: pwsh
+        shell: powershell
         run: docker-compose up -d
       
       - name: Check frontend
-        shell: pwsh
+        shell: powershell
         run: curl http://localhost:81
       
       # Opcional: Limpiar después de la ejecución
       # - name: Cleanup
-      #   shell: pwsh
+      #   shell: powershell
       #   run: docker-compose down
